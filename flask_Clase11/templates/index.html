@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{%  block content %}
+    {% from "_macro.html" import render_field %}
+    
+    <form>
+        <!-- Puedo agregar clases dentro del render_field:
+        render_field(form.username, class='algo') -->
+        {{ render_field(form.username) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.comment) }}
+    </form>
+{% endblock %}
