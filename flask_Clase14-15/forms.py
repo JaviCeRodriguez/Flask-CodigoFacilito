@@ -1,5 +1,6 @@
 from wtforms import Form
 from wtforms import StringField, TextField
+from wtforms import PasswordField
 from wtforms.fields.html5 import EmailField
 from wtforms import validators
 from wtforms import HiddenField
@@ -22,3 +23,10 @@ class CommentForm(Form):
     ])
     comment = TextField('Comentario')
     honeypot = HiddenField('', [length_honeypot])
+
+class LoginForm(Form):
+    username = StringField('Username', [
+        validators.Required(message = 'El username es requerido'),
+        validators.length(min=4, max=25, message='Ingrese usuario valido')
+    ])
+    password = PasswordField('Password', [validators.Required(message = 'El password es requerido')])
